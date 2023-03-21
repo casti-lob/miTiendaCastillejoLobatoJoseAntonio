@@ -17,7 +17,7 @@ id INT(6) AUTO_INCREMENT,
 title VARCHAR(150) unique,
 sinopsis VARCHAR(500),
 price FLOAT(5,2),
-id_category INT(6),
+idCategory INT(6),
 stock INT(5),
 
 CONSTRAINT PK_ARTICLE PRIMARY KEY (id),
