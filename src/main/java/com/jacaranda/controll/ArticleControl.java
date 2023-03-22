@@ -15,5 +15,16 @@ public class ArticleControl {
 		List<Article> element = query.getResultList();
 		return element;
 	}
+	
+	public static void addArticle(Article article) {
+		try {
+			ConnectionDAO.getSession().getTransaction().begin();
+			ConnectionDAO.getSession().save(article);
+			ConnectionDAO.getSession().getTransaction().commit();
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			ConnectionDAO.getSession().getTransaction().rollback();
+		}
+	}
 }
 
