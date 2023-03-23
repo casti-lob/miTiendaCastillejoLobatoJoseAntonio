@@ -65,9 +65,9 @@
 					<h6 class="card-subtitle mb-2 text-muted">Stock: <%=i.getStock() %></h6>
 					</li>
 				<div class="card-footer text-muted">
-					<a href="#" class="btn btn-primary">Borrar</a>
-				        <a href="#" class="btn btn-primary">Editar</a>
-				        <a href="#" class="btn btn-primary">Comprar</a>
+					<a href="DeleteMovie.jsp?id=<%=i.getId()%>"class="btn btn-primary">Borrar</a>
+				        <a href="ModMovie.jsp?id=<%=i.getId()%>" class="btn btn-primary">Editar</a>
+				        <a href="" class="btn btn-primary">Comprar</a>
   				</div>
 		        
 						
