@@ -43,7 +43,7 @@
 	<!-- Pills content -->
 	<div class="tab-content">
 	  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-	    <form>
+	    <form action="LoginUser.jsp" method="post">
 	      <div class="text-center mb-3">
 	        <p>Inicia sesión</p>
 
@@ -51,13 +51,13 @@
 	
 	      <!-- Email input -->
 	      <div class="form-outline mb-4">
-	        <input type="email" id="loginName" class="form-control" required="required"/>
+	        <input type="text" id="loginName" name="userName" class="form-control" required="required"/>
 	        <label class="form-label" for="loginName">Nombre de usuario</label>
 	      </div>
 	
 	      <!-- Password input -->
 	      <div class="form-outline mb-4">
-	        <input type="password" id="loginPassword" class="form-control" required="required" />
+	        <input type="password" id="loginPassword" name="password" class="form-control" required="required" />
 	        <label class="form-label" for="loginPassword">Password</label>
 	      </div>
 	
