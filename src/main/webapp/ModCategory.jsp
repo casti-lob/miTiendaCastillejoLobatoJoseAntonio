@@ -1,8 +1,5 @@
-<%@page import="java.util.List"%>
 <%@page import="com.jacaranda.controll.CategoryControl"%>
 <%@page import="com.jacaranda.Category"%>
-<%@page import="com.jacaranda.controll.ArticleControl"%>
-<%@page import="com.jacaranda.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,7 +13,7 @@
 <body>
 <%
 	int id = Integer.parseInt(request.getParameter("id"));
-	Article movie = ArticleControl.getArticle(id);
+	Category category = CategoryControl.getCatetory(id);
 %>
 	<!-- Cabecera -->
 	<div class="header">
@@ -25,7 +22,7 @@
 		    <a class="nav-link" aria-current="page" href="Index.jsp">Artículos</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Categorías</a>
+		    <a class="nav-link" href="Category.jsp">Categorías</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="#">Login</a>
@@ -36,46 +33,22 @@
 	
 	<!-- Contenedor -->
 	<div class="container" >
-	<h1 class="display-2">Vas a modificar la película</h1>
-		<form action="ModMovieConfirm.jsp" method="post">
+	<h1 class="display-2">Vas a modificar una categoría</h1>
+		<form action="ModCategoryConfirm.jsp" method="post">
 		<div class="mb-3">
 		<!-- Ocultamos elemento para enviarlo -->
-		    <input type="text" hidden value="<%=movie.getId() %>" class="form-control" id="id" name="id" >
+		    <input type="text" hidden value="<%=category.getId() %>" class="form-control" id="id" name="id" >
 		  </div>
 		  <div class="mb-3">
-		    <label for="titleMovie" class="form-label">Título</label>
-		    <input type="text" placeholder="<%=movie.getTitle() %>" class="form-control" id="title" name="title" required="required" >
+		    <label for="titleMovie" class="form-label">Nombre</label>
+		    <input type="text" placeholder="<%=category.getName() %>" class="form-control" id="name" name="name" required="required" >
 		  </div>
 		   <div class="mb-3">  		
-		    <label for="sinopsis" class="form-label">Sinopsis</label>
-		    <textarea class="form-control" placeholder="<%=movie.getSinopsis() %>" id="sinopsis" name="sinopsis" style="height: 100px" required="required"></textarea>
+		    <label for="sinopsis" class="form-label">Descripción</label>
+		    <textarea class="form-control" placeholder="<%=category.getDescription() %>" id="description" name="description" style="height: 100px" required="required"></textarea>
 		  </div>
-		  <div class="mb-3">
-		    <label for="price" class="form-label">Precio</label>
-		    <input type="number" step="0.01" placeholder="<%=movie.getPrice() %>" class="form-control" id="price" name="price" required="required" min="1">
-		  </div>
-		  <div class="mb-3">
-		      <label for="category" class="form-label">Género</label>
-		      <select id="category" class="form-select" name="category">
-		      	<%
-		      		List<Category> category = CategoryControl.showCategory();
-		    		for(Category i: category){
-		    			if(movie.getIdCategory().getId()==i.getId()){
-		      	%>
-		      	
-		        <option selected="selected" value=<%=i.getId()%>><%=i.getName() %></option>
-		        <%
-		        }else{%>
-		        	<option value=<%=i.getId()%>><%=i.getName() %></option>
-		        <% }
-		    		}
-		        %>
-		      </select>
-		   </div>
-		   <div class="mb-3">
-		    	<label for="stock" class="form-label">Stock</label>
-		    	<input type="number" class="form-control" id="stock" name="stock" required="required" min="1" >
-		  	</div>
+		 
+		  
 		  	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Modificar
               </button>
@@ -85,11 +58,11 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">Vas a modificar una película</h1>
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">Vas a modificar una categoría</h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-			        ¿Estas seguro de modificar la nueva película?
+			        ¿Estas seguro de modificar la categoría?
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#exampleModal">Close</button>

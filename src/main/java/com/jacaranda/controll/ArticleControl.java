@@ -2,6 +2,7 @@ package com.jacaranda.controll;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.query.Query;
 
@@ -17,12 +18,23 @@ public class ArticleControl {
 		return element;
 	}
 	
-	public static void addArticle(Article article) {
+	public static void getArticleName(String nameTitle)throws ArticleException {
+		Query<Article> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Article a WHERE a.title =: nameTitle");
+		query.setParameter("nameTitle", nameTitle);
+		List results = query.getResultList();
+		if(!results.isEmpty()) {
+			throw new ArticleException("Ya existe una película con ese título");
+		}
+	
+	}
+	
+	public static void addArticle(Article article)  {
 		try {
+				ConnectionDAO.getSession().getTransaction().begin();
+				ConnectionDAO.getSession().save(article);
+				ConnectionDAO.getSession().getTransaction().commit();
 			
-			ConnectionDAO.getSession().getTransaction().begin();
-			ConnectionDAO.getSession().save(article);
-			ConnectionDAO.getSession().getTransaction().commit();
+			
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 			ConnectionDAO.getSession().getTransaction().rollback();

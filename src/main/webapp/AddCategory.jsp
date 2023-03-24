@@ -1,6 +1,3 @@
-<%@page import="com.jacaranda.controll.CategoryControl"%>
-<%@page import="com.jacaranda.Category"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -19,7 +16,7 @@
 		    <a class="nav-link" aria-current="page" href="Index.jsp">Artículos</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Categorías</a>
+		    <a class="nav-link" href="Category.jsp">Categorías</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="#">Login</a>
@@ -30,36 +27,18 @@
 	
 	<!-- Contenedor -->
 	<div class="container">
-	<h1 class="display-2">Crea una nueva Película</h1>
-		<form action="AddMovieConfirm.jsp" method="post">
+	<h1 class="display-2">Crea una nueva Categoría</h1>
+		<form action="AddCategoryConfirm.jsp" method="post">
 		  <div class="mb-3">
-		    <label for="titleMovie" class="form-label">Título</label>
-		    <input type="text" class="form-control" id="title" name="title" required="required" >
+		    <label for="titleMovie" class="form-label">Nombre</label>
+		    <input type="text" class="form-control" id="name" name="name" required="required" >
 		  </div>
 		   <div class="mb-3">  		
-		    <label for="sinopsis" class="form-label">Sinopsis</label>
-		    <textarea class="form-control" placeholder="Descripción de la película" id="sinopsis" name="sinopsis" style="height: 100px" required="required"></textarea>
+		    <label for="sinopsis" class="form-label">Descripción</label>
+		    <textarea class="form-control" placeholder="Descripción de la categoría" id="description" name="description" style="height: 100px" required="required"></textarea>
 		  </div>
-		  <div class="mb-3">
-		    <label for="price" class="form-label">Precio</label>
-		    <input type="number" step="0.01" class="form-control" id="price" name="price" required="required" min="1">
-		  </div>
-		  <div class="mb-3">
-		      <label for="category" class="form-label">Género</label>
-		      <select id="category" class="form-select" name="category">
-		      	<%
-		      		//Obtenemos la categorias para mostrar el género y asignarle su id
-		      		List<Category> category = CategoryControl.showCategory();
-		    		for(Category i: category){
-		      	%>
-		        <option value=<%=i.getId()%>><%=i.getName() %></option>
-		        <%} %>
-		      </select>
-		   </div>
-		   <div class="mb-3">
-		    	<label for="stock" class="form-label">Stock</label>
-		    	<input type="number" class="form-control" id="stock" name="stock" required="required" min="1">
-		  	</div>
+		  
+		   
 		  	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Añadir
               </button>
@@ -70,11 +49,11 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">Vas a crear una nueva Película</h1>
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">Vas a crear una nueva Categoría</h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-			        ¿Estas seguro de añadir la nueva película?
+			        ¿Estas seguro de añadir la nueva categoría?
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#exampleModal">Close</button>

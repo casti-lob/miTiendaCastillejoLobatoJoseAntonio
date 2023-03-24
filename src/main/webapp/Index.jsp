@@ -21,7 +21,7 @@
 		    <a class="nav-link active" aria-current="page" href="#">Artículos</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Categorías</a>
+		    <a class="nav-link" href="Category.jsp">Categorías</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="#">Login</a>
@@ -59,10 +59,10 @@
 		      </div>
 		      <ul  class="list-group list-group-flush">
 			        <li class="list-group-item">
-						 <h6 class="card-subtitle mb-2 text-muted"> Precio: <%=i.getPrice() %> </h6>
+						 <h6 class="card-subtitle mb-2 text-muted"> Precio: <%=i.getPrice() %> € </h6>
 					</li>
 					<li class="list-group-item">
-					<h6 class="card-subtitle mb-2 text-muted">Stock: <%=i.getStock() %></h6>
+					<h6 class="card-subtitle mb-2 text-muted">Stock: <%=i.getStock() %> ud.</h6>
 					</li>
 				<div class="card-footer text-muted">
 					<a href="DeleteMovie.jsp?id=<%=i.getId()%>"class="btn btn-primary">Borrar</a>

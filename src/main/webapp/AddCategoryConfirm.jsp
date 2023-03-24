@@ -1,8 +1,6 @@
-<%@page import="com.jacaranda.exception.ArticleException"%>
-<%@page import="com.jacaranda.controll.ArticleControl"%>
-<%@page import="com.jacaranda.Category"%>
 <%@page import="com.jacaranda.controll.CategoryControl"%>
-<%@page import="com.jacaranda.Article"%>
+<%@page import="com.jacaranda.Category"%>
+<%@page import="com.jacaranda.exception.CategoryException"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,28 +9,18 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
 </head>
 <body>
 	<%
-		String title = request.getParameter("title");
-		String sinopsis= request.getParameter("sinopsis");
-		double price = Double.parseDouble(request.getParameter("price"));
-		//Obtenemos el id de la categoria
-		Integer idCategory= Integer.parseInt(request.getParameter("category"));
-		//Encontramos la categoria
-		Category category = CategoryControl.getCatetory(idCategory);
-		Integer stock= Integer.parseInt(request.getParameter("stock"));
-		
+		String name = request.getParameter("name");
+		String description = request.getParameter("description");
 		try{
-		//Comprobamos si existe una peli con el mismo nombre
-		ArticleControl.getArticleName(title);
-		
-		Article newArticle= new Article(title,sinopsis,price,stock,category);
-		//Guardamos el articulo en la bbdd
-		ArticleControl.addArticle(newArticle);
+			CategoryControl.getCategoryName(name);
+			Category newCategory= new Category(name,description);
+			CategoryControl.addCategory(newCategory);
 		
 	%>
-	
 	<!-- Cabecera -->
 	<div class="header">
 		<ul class="nav nav-tabs">
@@ -40,7 +28,7 @@
 		    <a class="nav-link" aria-current="page" href="Index.jsp">Artículos</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="Category.jsp">Categorías</a>
+		    <a class="nav-link" href="#">Categorías</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="#">Login</a>
@@ -51,17 +39,29 @@
 	
 	<!-- Contenedor -->
 	<div class="container" align="center">
-	<h1 class="display-2">Se ha añadido la nueva película</h1>
+	<h1 class="display-2">Se ha añadido la nueva Categoría</h1>
 		<div class="card">
+		    	<div class="card-header">
+		    	<p>Nombre Categoría:</p>
+		    	 <h5 class="card-title"><%=newCategory.getName() %></h5>
+		    	 
+		    	</div>
 		      <div class="card-body">
-		        <h5 class="card-title">Película: <%=title%> Genero: <%=category.getName() %></h5>
-		        <h6 class="card-subtitle mb-2 text-muted">Sinopsis</h6>
-		        <p class="card-text"> <%=sinopsis %> </p>
-		         <h6 class="card-subtitle mb-2 text-muted">Precio: <%=price%> Stock: <%=stock %> </h6>
-		        
-		       <a href="Index.jsp" class="btn btn-primary">Volver al inicio</a>
+		      	<p>
+		      	Descripción Categoría:
+		      	</p>
+		      	
+		        <h5 class="card-title"> <%=newCategory.getDescription()%></h5>
 		      </div>
-		   </div>
+				<div class="card-footer text-muted">
+					<a href="Category.jsp"class="btn btn-primary">Volver al las categorías</a>
+				       
+				        
+  				</div>
+		        
+						
+					
+		    </div>
 		  
 	</div>
 	<!-- Contenedor -->
@@ -75,10 +75,9 @@
 		 </div>
 	</footer>
 	<!-- Footer -->
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-	<%}catch(ArticleException exception){
-		%>
+	<%
+		}catch(CategoryException e){
+			%>
 			<!-- Cabecera -->
 	<div class="header">
 		<ul class="nav nav-tabs">
@@ -97,7 +96,7 @@
 	
 	<!-- Contenedor -->
 	<div class="container" align="center">
-	<h1 class="display-2"><%=exception.getMessage() %></h1>
+	<h1 class="display-2"><%=e.getMessage() %></h1>
 	
 		  <a href="Index.jsp" class="btn btn-primary">Volver al inicio</a>
 	</div>
@@ -119,5 +118,6 @@
 	}
 	
 	%>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
