@@ -21,10 +21,10 @@
 		    <a class="nav-link active" aria-current="page" href="#">Artículos</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="Category.jsp">Categorías</a>
+		    <a class="nav-link" href="../category/Category.jsp">Categorías</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Login</a>
+		    <a class="nav-link" href="../login/login.jsp">Login</a>
 		  </li>
 		</ul>
 	</div>

@@ -11,22 +11,27 @@
 
 </head>
 <body>
-	<%
-	//Obtenemos el id lanzado en el index y recuperamos el elemento
-		int idCategory= Integer.parseInt(request.getParameter("id"));
-		Category category = CategoryControl.getCatetory(idCategory);
-	%>
+<%
+
+String name = request.getParameter("name");
+String description= request.getParameter("description");
+int idOldCategory=Integer.parseInt(request.getParameter("id"));
+
+Category modCategory= new Category(name,description);
+//Modificamos el articulo en la bbdd
+CategoryControl.modCategory(modCategory,idOldCategory);
+%>
 	<!-- Cabecera -->
 	<div class="header">
 		<ul class="nav nav-tabs">
 		  <li class="nav-item">
-		    <a class="nav-link" aria-current="page" href="Index.jsp">Artículos</a>
+		    <a class="nav-link" aria-current="page" href="../article/Index.jsp">Artículos</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Categorías</a>
+		    <a class="nav-link" href="Category.jsp">Categorías</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Login</a>
+		    <a class="nav-link" href="../login/login.jsp">Login</a>
 		  </li>
 		</ul>
 	</div>
@@ -34,14 +39,15 @@
 	
 	<!-- Contenedor -->
 	<div class="container" align="center">
-	<h1 class="display-2">Estas seguro de eliminar esta Categoía</h1>
+	<h1 class="display-2">Se ha modificado la película</h1>
 		<div class="card">
 		      <div class="card-body">
-		        <h5 class="card-title">Categoría: <%=category.getName()%></h5>
+		        <h5 class="card-title">Categoría: <%=name%> </h5>
 		        <h6 class="card-subtitle mb-2 text-muted">Descripción</h6>
-		        <p class="card-text"> <%=category.getDescription() %> </p>		        
-		       <a href="Index.jsp" class="btn btn-primary">Cancelar</a>
-		       <a href="DeleteCategoryConfirm.jsp?id=<%=category.getId()%>" class="btn btn-danger">Confirmar</a>
+		        <p class="card-text"> <%=description %> </p>
+		 
+		        
+		       <a href="Category.jsp" class="btn btn-primary">Volver al inicio</a>
 		      </div>
 		   </div>
 		  
@@ -57,8 +63,8 @@
 		 </div>
 	</footer>
 	<!-- Footer -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	
 </body>
 </html>
