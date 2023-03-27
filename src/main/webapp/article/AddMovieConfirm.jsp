@@ -45,7 +45,7 @@
 	<!-- Contenedor -->
 	<div class="container" align="center">
 	<%
-	if(ArticleControl.checkArticleName(title)==false){
+	if(ArticleControl.compruebaArticleName(title)){
 		Article newArticle= new Article(title,sinopsis,price,stock,category);
 		//Guardamos el articulo en la bbdd
 		ArticleControl.addArticle(newArticle);
