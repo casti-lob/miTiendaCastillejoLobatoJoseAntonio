@@ -17,14 +17,18 @@ public class ArticleControl {
 		List<Article> element = query.getResultList();
 		return element;
 	}
-	
-	public static void getArticleName(String nameTitle)throws ArticleException {
+	// cambiar a boolean
+	public static boolean checkArticleName(String nameTitle) {
+		boolean repeat = true;
 		Query<Article> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Article a WHERE a.title =: nameTitle");
 		query.setParameter("nameTitle", nameTitle);
-		List results = query.getResultList();
-		if(!results.isEmpty()) {
-			throw new ArticleException("Ya existe una película con ese título");
+		try {
+			Article results = query.getSingleResult();
+			repeat= false;
+		}catch (Exception e) {
+			
 		}
+		return repeat;
 	
 	}
 	
