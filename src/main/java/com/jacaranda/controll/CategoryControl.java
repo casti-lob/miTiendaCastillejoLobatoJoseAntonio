@@ -21,14 +21,18 @@ public class CategoryControl {
 		Category c =ConnectionDAO.getSession().get(Category.class,id);
 		return c;
 	}
-	public static void getCategoryName(String nameCategory)throws CategoryException {
+	public static boolean checkCategoryName(String nameCategory){
+		boolean repeat = true;
 		Query<Category> query = ConnectionDAO.getSession().createQuery("SELECT c FROM com.jacaranda.Category c WHERE c.name =: nameCategory");
 		query.setParameter("nameCategory", nameCategory);
-		List results = query.getResultList();
-		if(!results.isEmpty()) {
-			throw new CategoryException("Ya existe una categoría con ese nombre");
+		try {
+			Category results = query.getSingleResult();
+			repeat = false;
+		}catch(Exception e) {
+			
 		}
-	
+		
+		return repeat;
 	}
 	public static void addCategory(Category c) {
 		try {

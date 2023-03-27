@@ -45,10 +45,10 @@
 	<!-- Contenedor -->
 	<div class="container" align="center">
 	<%
-	if(ArticleControl.compruebaArticleName(title)){
-		Article newArticle= new Article(title,sinopsis,price,stock,category);
-		//Guardamos el articulo en la bbdd
-		ArticleControl.addArticle(newArticle);
+	if(ArticleControl.checkArticleName(title)){
+			Article newArticle= new Article(title,sinopsis,price,stock,category);
+			//Guardamos el articulo en la bbdd
+			ArticleControl.addArticle(newArticle);
 	%>
 	<h1 class="display-2">Se ha añadido la nueva película</h1>
 		<div class="card">

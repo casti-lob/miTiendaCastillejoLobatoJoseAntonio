@@ -18,7 +18,7 @@ public class ArticleControl {
 		return element;
 	}
 	// cambiar a boolean
-	public static boolean compruebaArticleName(String nameTitle) {
+	public static boolean checkArticleName(String nameTitle) {
 		boolean repeat = true;
 		Query<Article> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Article a WHERE a.title =: nameTitle");
 		query.setParameter("nameTitle", nameTitle);
