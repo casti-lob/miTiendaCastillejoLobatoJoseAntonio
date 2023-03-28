@@ -37,13 +37,13 @@ CONSTRAINT PK_USER PRIMARY KEY (userName)
 
 CREATE TABLE miTiendaCastillejoLobatoJoseAntonio.orders(
 userName VARCHAR(50),
-idaricle INT(6),
+idArticle INT(6),
 amount INT(11),
 price FLOAT(5,2),
 dateOfPurchase DATETIME,
 
-CONSTRAINT PK_ORDERS PRIMARY KEY (idaricle,userName,dateOfPurchase),
-CONSTRAINT FK_ORDERS FOREIGN KEY (idaricle) REFERENCES article (id) ON DELETE CASCADE,
+CONSTRAINT PK_ORDERS PRIMARY KEY (idArticle,userName,dateOfPurchase),
+CONSTRAINT FK_ORDERS FOREIGN KEY (idArticle) REFERENCES article (id) ON DELETE CASCADE,
 CONSTRAINT FK2_ORDERS FOREIGN KEY (userName) REFERENCES userDb(userName) ON DELETE CASCADE
 );
 

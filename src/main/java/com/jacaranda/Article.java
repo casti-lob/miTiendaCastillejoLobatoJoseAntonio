@@ -1,4 +1,4 @@
-package com.jacaranda;
+	package com.jacaranda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -23,9 +24,13 @@ public class Article {
 	private String sinopsis;
 	private double price;
 	private int stock;
+	
 	@ManyToOne
 	@JoinColumn(name="idCategory")
 	private Category idCategory;
+	
+	@OneToMany(mappedBy = "idArticle")
+	private List<Orders> orders = new ArrayList<Orders>();
 	
 	public Article() {
 		super();
@@ -38,6 +43,7 @@ public class Article {
 		this.price = price;
 		this.stock = stock;
 		this.idCategory = idCategory;
+		this.orders= new ArrayList<Orders>();
 	}
 
 	public String getTitle() {
@@ -84,6 +90,15 @@ public class Article {
 		return id;
 	}
 	
+
+	public List<Orders> getOrders() {
+		return orders;
+	}
+	
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
 
 	@Override
 	public int hashCode() {

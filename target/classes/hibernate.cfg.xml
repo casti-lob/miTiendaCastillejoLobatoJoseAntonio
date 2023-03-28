@@ -10,8 +10,9 @@
   <property name="hibernate.connection.password">castillejoJose</property>
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.format_sql">true</property>
-  <mapping class="com.jacaranda.Article"/>
   <mapping class="com.jacaranda.Category"/>
   <mapping class="com.jacaranda.UserDb"/>
+  <mapping class="com.jacaranda.Article"/>
+  <mapping class="com.jacaranda.Orders"/>
  </session-factory>
 </hibernate-configuration>

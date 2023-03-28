@@ -1,10 +1,13 @@
 package com.jacaranda;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -22,6 +25,8 @@ public class UserDb {
 	private Date birthdayDate;
 	private char gender;
 	private boolean admin;
+	@OneToMany(mappedBy = "userName")
+private List<Orders> orders = new ArrayList<Orders>();
 	
 	public UserDb(String userName, String password, String name, String surname, Date birthdayDate, char gender,
 			boolean admin) {
@@ -102,7 +107,12 @@ public class UserDb {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-
+	
+	
+	public List<Orders> getOrders() {
+		return orders;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(userName);
