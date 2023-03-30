@@ -14,6 +14,6 @@
 	Article movie = ArticleControl.getArticle(idMovie);
 	ArticleControl.deleteArticle(movie);
 	%>
-	<jsp:forward page="Index.jsp"></jsp:forward>
+	<jsp:forward page="Article.jsp"></jsp:forward>
 </body>
 </html>

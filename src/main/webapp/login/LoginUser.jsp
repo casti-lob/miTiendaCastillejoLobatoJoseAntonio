@@ -24,7 +24,7 @@
 			sesion.setAttribute("admin", user.isAdmin());
 			
 	%>
-		<p><%=sesion.getAttribute("admin") %></p> 
+		<jsp:forward page="../article/Article.jsp"></jsp:forward>
 	<%
 		}else{
 	%>	

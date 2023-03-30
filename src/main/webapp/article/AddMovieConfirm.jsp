@@ -13,6 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+
 	<%
 	String title = request.getParameter("title");
 			String sinopsis= request.getParameter("sinopsis");
@@ -30,13 +31,24 @@
 	<div class="header">
 		<ul class="nav nav-tabs">
 		  <li class="nav-item">
-		    <a class="nav-link" aria-current="page" href="Index.jsp">Artículos</a>
+		    <a class="nav-link" aria-current="page" href="Article.jsp">Artículos</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="../category/Category.jsp">Categorías</a>
 		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="../login/login.jsp">Login</a>
+		  <!-- Usuario -->
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >
+		    	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+				  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+				</svg>
+				Usuario <%=session.getAttribute("user") %>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a class="dropdown-item  text-danger"  data-bs-toggle="tooltip"
+              data-bs-title="Al cerrar sesión no podras acceder a los artículos ni categorías" href="../login/SingOut.jsp">Cerrar sesión</a></li>
+		      
+		    </ul>
 		  </li>
 		</ul>
 	</div>
@@ -58,13 +70,13 @@
 		        <p class="card-text"> <%=sinopsis %> </p>
 		         <h6 class="card-subtitle mb-2 text-muted">Precio: <%=price%> Stock: <%=stock %> </h6>
 		        
-		       <a href="Index.jsp" class="btn btn-primary">Volver al inicio</a>
+		       <a href="Article.jsp" class="btn btn-primary">Volver a artículos</a>
 		      </div>
 		   </div>
 	<%
 	}else{ %>
 		<h1 class="display-2">Ya existe una película con ese nombre</h1>
-		<a href="Index.jsp" class="btn btn-primary">Volver al inicio</a>
+		<a href="Article.jsp" class="btn btn-primary">Volver a artículos</a>
 		
 	<%}
 	%>

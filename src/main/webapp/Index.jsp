@@ -10,17 +10,7 @@
 <body>
 <!-- Cabecera -->
 	<div class="header">
-		<ul class="nav nav-tabs">
-		  <li class="nav-item">
-		    <a class="nav-link active" aria-current="page" href="#">Artículos</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="../category/Category.jsp">Categorías</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Login</a>
-		  </li>
-		</ul>
+		<h1 class="display-2">Peliculas Castillejo</h1>
 	</div>
 	<!-- Cabecera -->
 	
@@ -43,7 +33,7 @@
 	<!-- Pills content -->
 	<div class="tab-content">
 	  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-	    <form action="LoginUser.jsp" method="post">
+	    <form action="login/LoginUser.jsp" method="post">
 	      <div class="text-center mb-3">
 	        <p>Inicia sesión</p>
 
@@ -67,7 +57,7 @@
 	
 	      <!-- Register buttons -->
 	      <div class="text-center">
-	        <p>No tienes cuenta? <a href="#!">Regístrate</a></p>
+	        <p>Para acceder a la tienda necesitas tener cuenta <a href="#!">Regístrate</a></p>
 	      </div>
 	    </form>
 	  </div>
