@@ -1,6 +1,7 @@
 package com.jacaranda;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,14 +23,14 @@ public class UserDb {
 	private String password;
 	private String name;
 	private String surname;
-	private Date birthdayDate;
+	private LocalDate birthdayDate;
 	private char gender;
 	private boolean admin;
 	@OneToMany(mappedBy = "userName")
 private List<Orders> orders = new ArrayList<Orders>();
 	
-	public UserDb(String userName, String password, String name, String surname, Date birthdayDate, char gender,
-			boolean admin) {
+	public UserDb(String userName, String password, String name, String surname, LocalDate birthdayDate, char gender
+			) {
 		super();
 		this.userName = userName;
 		this.password = DigestUtils.md5Hex(password);
@@ -42,7 +43,7 @@ private List<Orders> orders = new ArrayList<Orders>();
 			System.out.println(e.getMessage());
 			
 		}
-		this.admin = admin;
+		this.admin = false;
 	}
 
 	public UserDb() {
@@ -81,11 +82,11 @@ private List<Orders> orders = new ArrayList<Orders>();
 		this.surname = surname;
 	}
 
-	public Date getBirthdayDate() {
+	public LocalDate getBirthdayDate() {
 		return birthdayDate;
 	}
 
-	public void setBirthdayDate(Date birthdayDate) {
+	public void setBirthdayDate(LocalDate birthdayDate) {
 		this.birthdayDate = birthdayDate;
 	}
 

@@ -24,7 +24,7 @@
 	      aria-controls="pills-login" aria-selected="true">Login</a>
 	  </li>
 	  <li class="nav-item" role="presentation">
-	    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+	    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="login/SingUp.jsp" role="tab"
 	      aria-controls="pills-register" aria-selected="false">Register</a>
 	  </li>
 	</ul>
@@ -57,7 +57,7 @@
 	
 	      <!-- Register buttons -->
 	      <div class="text-center">
-	        <p>Para acceder a la tienda necesitas tener cuenta <a href="#!">Regístrate</a></p>
+	        <p>Para acceder a la tienda necesitas tener cuenta <a href="login/SingUp.jsp">Regístrate</a></p>
 	      </div>
 	    </form>
 	  </div>

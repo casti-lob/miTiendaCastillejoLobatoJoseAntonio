@@ -21,6 +21,7 @@
 		if(session.getAttribute("login")==null){%>
 			<jsp:forward page="/ErrorLogin"></jsp:forward>
 		<%}
+	boolean admin =(boolean)session.getAttribute("admin");
 	%>
 
 	<!-- Cabecera -->
@@ -55,12 +56,14 @@
 	<!-- Contenedor -->
 	<div class="container">
 		<h1 class="display-2">Peliculas Castillejo</h1>
+		<%if(admin==true){ %>
 		<div class="card text-center">
+		
 		  <div class="card-body">
 		    <h5 class="card-title">Añada una nueva película</h5>
 		    <a href="../article/AddMovie.jsp" class="btn btn-primary">Añadir</a>
 		  </div>
-		</div>
+		</div><%} %>
 		<div class="row">
 	<%
 	List<Article> articles = ArticleControl.showArticle();
@@ -87,8 +90,13 @@
 					<h6 class="card-subtitle mb-2 text-muted">Stock: <%=i.getStock() %> ud.</h6>
 					</li>
 				<div class="card-footer text-muted">
+					<%
+					
+					if(admin==true){
+					%>
 					<a href="../article/DeleteMovie.jsp?id=<%=i.getId()%>"class="btn btn-primary">Borrar</a>
 				        <a href="../article/ModMovie.jsp?id=<%=i.getId()%>" class="btn btn-primary">Editar</a>
+				      <%}%>
 				        <a href="" class="btn btn-primary">Comprar</a>
   				</div>
 		        

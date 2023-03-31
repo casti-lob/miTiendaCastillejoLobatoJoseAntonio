@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.codec.digest.DigestUtils"%>
 <%@page import="com.jacaranda.UserDb"%>
 <%@page import="com.jacaranda.controll.UserControl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,7 +15,9 @@
 		HttpSession sesion = request.getSession();
 		//Obtenemos los datos del user para hacer login
 		String userName= request.getParameter("userName");
-		String password= request.getParameter("password");
+		String password= DigestUtils.md5Hex(request.getParameter("password")) ;
+		
+		
 		//Comprobamos si los datos del usuario es correcto
 		boolean existUser= UserControl.checkUser(userName, password);
 		if(existUser==true){

@@ -176,5 +176,5 @@ insert into miTiendaCastillejoLobatoJoseAntonio.article (title, sinopsis, price,
 
 
 
-insert into miTiendaCastillejoLobatoJoseAntonio.userDb (userName, password, name, surname, birthdayDate, gender, admin) values ('castillejo','jose', 'jose', 'castillejo', '1996-06-13','M',1);
+insert into miTiendaCastillejoLobatoJoseAntonio.userDb (userName, password, name, surname, birthdayDate, gender, admin) values ('castillejo',md5('jose'), 'jose', 'castillejo', '1996-06-13','M',1);
 

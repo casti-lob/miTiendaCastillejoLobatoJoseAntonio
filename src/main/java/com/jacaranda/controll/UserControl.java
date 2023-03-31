@@ -19,4 +19,16 @@ public class UserControl {
 		return check;
 	}
 	
+	public static void addUser(UserDb user) {
+		try {
+			ConnectionDAO.getSession().getTransaction().begin();
+			ConnectionDAO.getSession().save(user);
+			ConnectionDAO.getSession().getTransaction().commit();
+
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			ConnectionDAO.getSession().getTransaction().rollback();
+		}
+	}
+	
 }

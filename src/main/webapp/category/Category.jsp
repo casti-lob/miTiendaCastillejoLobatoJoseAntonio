@@ -19,6 +19,7 @@
 		if(session.getAttribute("login")==null){%>
 			<jsp:forward page="/ErrorLogin"></jsp:forward>
 		<%}
+boolean admin = (boolean) session.getAttribute("admin");
 	%>
 		<!-- Cabecera -->
 	<div class="header">
@@ -51,13 +52,14 @@
 	<div class="container">
 		<div class="list-group">
 			<div class="row">
+			<%if(admin== true){ %>
 				<div class="card text-center">
 				  <div class="card-body">
 				    <h5 class="card-title">Añada una nueva categoría</h5>
 				    <a href="../category/AddCategory.jsp" class="btn btn-primary">Añadir</a>
 				  </div>
 				</div>
-			<%
+			<%}
 				List <Category> categories = CategoryControl.showCategory();
 			
 				for(Category i: categories){
@@ -76,11 +78,16 @@
 		      	
 		        <h5 class="card-title"> <%=i.getDescription()%></h5>
 		      </div>
+		      <%
+		      	
+		      	if(admin== true){
+		      %>
 				<div class="card-footer text-muted">
 					<a href="../category/DeleteCategory.jsp?id=<%=i.getId()%>"class="btn btn-primary">Borrar</a>
 				        <a href="../category/ModCategory.jsp?id=<%=i.getId()%>" class="btn btn-primary">Editar</a>
 				        
   				</div>
+  				<%} %>
 		        
 						
 					
