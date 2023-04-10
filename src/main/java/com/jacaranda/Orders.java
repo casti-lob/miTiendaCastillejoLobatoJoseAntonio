@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "orders")
 @IdClass(Orders_Id.class)
-public class Orders {
+public class Orders implements Comparable<Orders> {
 	@Id
 	private LocalDateTime dateOfPurchase;
 	private int amount;
@@ -93,5 +93,15 @@ public class Orders {
 				&& Objects.equals(userName, other.userName);
 	}
 	
+	@Override
+	public int compareTo(Orders o) {
+		if(this.dateOfPurchase.isBefore(o.getDateOfPurchase())) {
+			return 1;
+		}else if(this.dateOfPurchase.isAfter(o.getDateOfPurchase())) {
+			return -1;
+		}else {
+			return 0;
+		}
+	}
 	
 }

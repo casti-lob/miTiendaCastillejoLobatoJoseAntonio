@@ -61,6 +61,12 @@ public class Purchase {
 		}
 	}
 	
+	public void remuveProduct(Article article) {
+		if(this.listPurchase.containsKey(article)) {
+			this.listPurchase.remove(article);
+		}
+	}
+	
 	
 	
 }
