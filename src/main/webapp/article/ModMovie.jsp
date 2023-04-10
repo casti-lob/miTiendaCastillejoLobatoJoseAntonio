@@ -61,15 +61,15 @@
 		  </div>
 		  <div class="mb-3">
 		    <label for="titleMovie" class="form-label">Título</label>
-		    <input type="text" placeholder="<%=movie.getTitle() %>" class="form-control" id="title" name="title" required="required" >
+		    <input type="text" value="<%=movie.getTitle() %>" class="form-control" id="title" name="title" required="required" >
 		  </div>
 		   <div class="mb-3">  		
 		    <label for="sinopsis" class="form-label">Sinopsis</label>
-		    <textarea class="form-control" placeholder="<%=movie.getSinopsis() %>" id="sinopsis" name="sinopsis" style="height: 100px" required="required"></textarea>
+		    <textarea class="form-control" value="<%=movie.getSinopsis() %>" id="sinopsis" name="sinopsis" style="height: 100px" required="required"><%=movie.getSinopsis() %></textarea>
 		  </div>
 		  <div class="mb-3">
 		    <label for="price" class="form-label">Precio</label>
-		    <input type="number" step="0.01" placeholder="<%=movie.getPrice() %>" class="form-control" id="price" name="price" required="required" min="1">
+		    <input type="number" step="0.01" value="<%=movie.getPrice() %>" class="form-control" id="price" name="price" required="required" min="1">
 		  </div>
 		  <div class="mb-3">
 		      <label for="category" class="form-label">Género</label>
@@ -91,7 +91,7 @@
 		   </div>
 		   <div class="mb-3">
 		    	<label for="stock" class="form-label">Stock</label>
-		    	<input type="number" class="form-control" id="stock" name="stock" required="required" min="1" >
+		    	<input type="number" value="<%=movie.getStock() %>" class="form-control" id="stock" name="stock" required="required" min="1" >
 		  	</div>
 		  	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Modificar

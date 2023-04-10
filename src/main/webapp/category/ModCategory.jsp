@@ -59,11 +59,11 @@
 		  </div>
 		  <div class="mb-3">
 		    <label for="titleMovie" class="form-label">Nombre</label>
-		    <input type="text" placeholder="<%=category.getName() %>" class="form-control" id="name" name="name" required="required" >
+		    <input type="text" value="<%=category.getName() %>" class="form-control" id="name" name="name" required="required" >
 		  </div>
 		   <div class="mb-3">  		
 		    <label for="sinopsis" class="form-label">Descripción</label>
-		    <textarea class="form-control" placeholder="<%=category.getDescription() %>" id="description" name="description" style="height: 100px" required="required"></textarea>
+		    <textarea class="form-control" value="<%=category.getDescription() %>" id="description" name="description" style="height: 100px" required="required"><%=category.getDescription()%></textarea>
 		  </div>
 		 
 		  
