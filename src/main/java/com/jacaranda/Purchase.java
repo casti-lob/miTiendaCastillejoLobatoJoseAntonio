@@ -7,17 +7,12 @@ import java.util.Objects;
 import com.jacaranda.exception.PurchaseException;
 
 public class Purchase {
-	private HashMap<Article, Integer> listPurchase;
+	private  HashMap<Article, Integer> listPurchase;
 	
-	
-	public Purchase(HashMap<Article, Integer> listPurchase) {
-		super();
-		this.listPurchase = new HashMap<>();
-		
-	}
 
 	public Purchase() {
 		super();
+		this.listPurchase=new HashMap<Article, Integer>();
 	}
 
 	public HashMap<Article, Integer> getListPurchase() {
@@ -50,7 +45,9 @@ public class Purchase {
 	}
 	
 	public void addPurchase(Article article, Integer stock) throws PurchaseException{
-		if(this.listPurchase.containsKey(article)) {
+		if(this.listPurchase==null) {
+			listPurchase.put(article, stock);
+		}else if(this.listPurchase.containsKey(article)) {
 			if(this.listPurchase.get(article)>= article.getStock()) {
 				throw new PurchaseException("No hay stock suficiente");
 			}else {
@@ -61,12 +58,20 @@ public class Purchase {
 		}
 	}
 	
-	public void remuveProduct(Article article) {
+	public  void remuveProduct(Article article) {
 		if(this.listPurchase.containsKey(article)) {
 			this.listPurchase.remove(article);
 		}
 	}
 	
+	public int sizePurchase() {
+		if(this.listPurchase==null) {
+			return 0;
+		}else {
+			return this.listPurchase.size();
+		}
+		
+	}
 	
 	
 }

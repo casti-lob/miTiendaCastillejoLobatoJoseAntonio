@@ -1,3 +1,4 @@
+<%@page import="com.jacaranda.Purchase"%>
 <%@page import="com.jacaranda.controll.CategoryControl"%>
 <%@page import="com.jacaranda.Category"%>
 <%@page import="com.jacaranda.controll.ArticleControl"%>
@@ -22,6 +23,7 @@
 			<jsp:forward page="/ErrorLogin"></jsp:forward>
 		<%}
 	boolean admin =(boolean)session.getAttribute("admin");
+	Purchase listPurchase=(Purchase) session.getAttribute("listPurchase");
 	%>
 
 	<!-- Cabecera -->
@@ -55,7 +57,9 @@
 			</svg>
 		    Carrito de compras
 		     <span class=" badge bg-danger">
-			    99+ <!-- Debemos de consultar la longitud le la lista de purchase -->
+			  <%=listPurchase.sizePurchase() %>
+			    <!-- Debemos de consultar la longitud le la lista de purchase -->
+			   	
 			    <span class="visually-hidden">unread messages</span>
 			  </span>
 		    </a>
@@ -109,7 +113,7 @@
 					<a href="../article/DeleteMovie.jsp?id=<%=i.getId()%>"class="btn btn-primary">Borrar</a>
 				        <a href="../article/ModMovie.jsp?id=<%=i.getId()%>" class="btn btn-primary">Editar</a>
 				      <%}%>
-				        <a href="" class="btn btn-primary">Comprar</a>
+				        <a href="../purchase/Cart.jsp?id=<%=i.getId()%>" class="btn btn-primary">Comprar</a>
   				</div>
 		        
 						

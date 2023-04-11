@@ -1,3 +1,4 @@
+<%@page import="com.jacaranda.Purchase"%>
 <%@page import="org.apache.commons.codec.digest.DigestUtils"%>
 <%@page import="com.jacaranda.UserDb"%>
 <%@page import="com.jacaranda.controll.UserControl"%>
@@ -25,7 +26,10 @@
 			sesion.setAttribute("login", true);
 			sesion.setAttribute("user", userName);
 			sesion.setAttribute("admin", user.isAdmin());
-			
+			//Iniciamos y guradamos en sesion la lista de compras
+			Purchase listPurchase = new Purchase();
+			sesion.setAttribute("listPurchase", listPurchase);
+
 	%>
 		<jsp:forward page="../article/Article.jsp"></jsp:forward>
 	<%
