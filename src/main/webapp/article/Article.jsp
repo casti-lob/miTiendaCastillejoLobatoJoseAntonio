@@ -48,7 +48,8 @@
 		    <ul class="dropdown-menu">
 		      <li><a class="dropdown-item  text-danger"  data-bs-toggle="tooltip"
               data-bs-title="Al cerrar sesión no podras acceder a los artículos ni categorías" href="../login/SingOut.jsp">Cerrar sesión</a></li>
-		      
+		       <li><a class="dropdown-item  text-danger"  
+               href="../login/SingOut.jsp">Historial de Compras</a></li>
 		    </ul>
 		  </li>
 		  <li class="nav-item">
@@ -115,13 +116,17 @@
 				        <a href="../article/ModMovie.jsp?id=<%=i.getId()%>" class="btn btn-primary">Editar</a>
 				      <%}%>
 				      <br>
+				      <%if(i.getStock()!=0){ %>
 				      Cantidad:
 				      <form action="../purchase/Cart.jsp" method="post">
 				      	 <input type="number"min="1" max="<%=i.getStock()%>" size="3" name="stockPurchase" value="1">
+				     	
 				        <input hidden="true" value="<%=i.getId()%>" name="id">
 				      	<button class="btn btn-primary" type="submit">Añadir al carrito</button>
 				      </form>
-				     
+				      <%}else{ %>
+				     	Sin stock sentimos las molestias
+				     	<%} %>
   				</div>
 		        
 						

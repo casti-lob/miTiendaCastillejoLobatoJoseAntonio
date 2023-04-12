@@ -60,8 +60,12 @@ public class Purchase {
 					this.listPurchase.put(article, this.listPurchase.get(article)+stock);
 				}
 			}else {
-				//No hace falta comprobar ya que no podemos poner un stock mayor al existente por la restricción del html
-				this.listPurchase.put(article, stock);
+				if(stock> article.getStock()) {
+					throw new PurchaseException("No hay stock suficiente");
+				}else {
+					this.listPurchase.put(article, stock);
+				}
+				
 			}
 	}
 	
