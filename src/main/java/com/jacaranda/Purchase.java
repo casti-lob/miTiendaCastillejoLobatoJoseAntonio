@@ -3,6 +3,7 @@ package com.jacaranda;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Set;
 
 import com.jacaranda.exception.PurchaseException;
 
@@ -18,7 +19,13 @@ public class Purchase {
 	public HashMap<Article, Integer> getListPurchase() {
 		return listPurchase;
 	}
-
+	//Para obtener una lista de las keys de nuestro hashmap
+	public Set<Article> getKeyPurchase() {
+		return this.listPurchase.keySet();
+	}
+	public int getUnit(Article a) {
+		return this.listPurchase.get(a);
+	}
 	public void setListPurchase(HashMap<Article, Integer> listPurchase) {
 		this.listPurchase = listPurchase;
 	}
@@ -44,19 +51,21 @@ public class Purchase {
 		this.listPurchase.clear();
 	}
 	
-	public void addPurchase(Article article, Integer stock) throws PurchaseException{
-		if(this.listPurchase==null) {
-			listPurchase.put(article, stock);
-		}else if(this.listPurchase.containsKey(article)) {
-			if(this.listPurchase.get(article)>= article.getStock()) {
-				throw new PurchaseException("No hay stock suficiente");
+	public void addPurchase(Article article, Integer stock)  throws PurchaseException {
+			
+		 if(this.listPurchase.containsKey(article)) {
+				if(this.listPurchase.get(article)+stock > article.getStock()) {
+					throw new PurchaseException("No hay stock suficiente");
+				}else {
+					this.listPurchase.put(article, this.listPurchase.get(article)+stock);
+				}
 			}else {
-				this.listPurchase.put(article, this.listPurchase.get(article)+1);
+				//No hace falta comprobar ya que no podemos poner un stock mayor al existente por la restricción del html
+				this.listPurchase.put(article, stock);
 			}
-		}else {
-			this.listPurchase.put(article, 1);
-		}
 	}
+	
+	
 	
 	public  void remuveProduct(Article article) {
 		if(this.listPurchase.containsKey(article)) {
