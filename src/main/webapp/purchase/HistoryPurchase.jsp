@@ -38,7 +38,7 @@
 		
 		<!-- Tabla -->
 		<br><br>
-		<table class="table table-success table-striped-columns">
+		<table class="table table-striped-columns table-info"">
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
@@ -73,7 +73,7 @@
 		  
 		</table>
 		
-		
+		<a href="../article/Article.jsp" class="btn btn-primary">Volver a artículos</a>
 	</div>
 	<!-- Footer -->
 	<footer>

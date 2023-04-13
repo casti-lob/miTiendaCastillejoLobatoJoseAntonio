@@ -11,15 +11,14 @@ public class OrdersControl {
 	
 	public static List<Orders> showOrders(String user){
 		
-		Query<Orders> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Orders a");
+		Query<Orders> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Orders a WHERE userName ='"+ user+"'");
 	
 		List<Orders> orders = query.getResultList();
 		return orders;
 	}
 	
 public static List<Orders> showOrdersDesc(String user){
-		
-		Query<Orders> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Orders a ORDER BY a.dateOfPurchase  DESC");
+		Query<Orders> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Orders a  WHERE userName='"+user+"' ORDER BY a.dateOfPurchase  DESC");
 	
 		List<Orders> orders = query.getResultList();
 		return orders;
@@ -27,7 +26,7 @@ public static List<Orders> showOrdersDesc(String user){
 	
 public static List<Orders> showOrdersAsc(String user){
 	
-	Query<Orders> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Orders a ORDER BY a.dateOfPurchase  ASC");
+	Query<Orders> query = ConnectionDAO.getSession().createQuery("SELECT a FROM com.jacaranda.Orders a  WHERE userName='"+user+"' ORDER BY a.dateOfPurchase  ASC");
 
 	List<Orders> orders = query.getResultList();
 	return orders;

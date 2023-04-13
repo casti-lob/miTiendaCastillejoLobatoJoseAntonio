@@ -60,7 +60,11 @@
 			</svg>
 		    Carrito de compras
 		     <span class=" badge bg-danger">
-			  <%=listPurchase.sizePurchase() %>
+			  <%if(listPurchase==null){ %>
+			  	0
+			  	<%}else{ %>
+			  	<%=listPurchase.sizePurchase() %>
+			  	<%} %>
 			    <!-- Debemos de consultar la longitud le la lista de purchase -->
 			   	
 			    <span class="visually-hidden">unread messages</span>
