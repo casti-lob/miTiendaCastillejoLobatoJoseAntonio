@@ -41,6 +41,8 @@
 				Usuario <%=session.getAttribute("user") %>
 		    </a>
 		    <ul class="dropdown-menu">
+		     <li><a class="dropdown-item  text-danger"  
+               href="../purchase/HistoryPurchase.jsp">Historial de Compras</a></li>
 		      <li><a class="dropdown-item  text-danger"  data-bs-toggle="tooltip"
               data-bs-title="Al cerrar sesión no podras acceder a los artículos ni categorías" href="../login/SingOut.jsp">Cerrar sesión</a></li>
 		      

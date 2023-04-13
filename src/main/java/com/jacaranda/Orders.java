@@ -67,8 +67,11 @@ public class Orders implements Comparable<Orders> {
 		this.price = price;
 	}
 
-	public UserDb getUserName() {
+	public UserDb getUser() {
 		return userName;
+	}
+	public String getUserName() {
+		return userName.getName();
 	}
 
 	public Article getIdArticle() {

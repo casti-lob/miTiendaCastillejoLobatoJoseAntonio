@@ -46,10 +46,11 @@
 				Usuario <%=session.getAttribute("user") %>
 		    </a>
 		    <ul class="dropdown-menu">
+		     <li><a class="dropdown-item  text-danger"  
+               href="../purchase/HistoryPurchase.jsp">Historial de Compras</a></li>
 		      <li><a class="dropdown-item  text-danger"  data-bs-toggle="tooltip"
               data-bs-title="Al cerrar sesión no podras acceder a los artículos ni categorías" href="../login/SingOut.jsp">Cerrar sesión</a></li>
-		       <li><a class="dropdown-item  text-danger"  
-               href="../login/SingOut.jsp">Historial de Compras</a></li>
+		      
 		    </ul>
 		  </li>
 		  <li class="nav-item">
@@ -125,7 +126,7 @@
 				      	<button class="btn btn-primary" type="submit">Añadir al carrito</button>
 				      </form>
 				      <%}else{ %>
-				     	Sin stock sentimos las molestias
+				     	<span class="text-danger">Sin stock sentimos las molestias</span>
 				     	<%} %>
   				</div>
 		        
