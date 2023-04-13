@@ -1,3 +1,4 @@
+<%@page import="com.jacaranda.Purchase"%>
 <%@page import="com.jacaranda.UserDb"%>
 <%@page import="java.time.temporal.ChronoUnit"%>
 <%@page import="com.jacaranda.controll.UserControl"%>
@@ -63,6 +64,8 @@
 		sesion.setAttribute("login", true);
 		sesion.setAttribute("user", userName);
 		sesion.setAttribute("admin", newUser.isAdmin());
+		Purchase listPurchase = new Purchase();
+		sesion.setAttribute("listPurchase", listPurchase);
 		%>
 			<jsp:forward page="../article/Article.jsp"></jsp:forward>
 		<%}
