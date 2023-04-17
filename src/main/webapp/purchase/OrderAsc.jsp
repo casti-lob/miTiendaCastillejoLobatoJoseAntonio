@@ -14,6 +14,11 @@
 </head>
 <body>
 	<%
+		//Comprobamos si hay una sesion creada y si no lo dirigimos al servlet de error
+		
+		if(session.getAttribute("login")==null){%>
+			<jsp:forward page="/ErrorLogin"></jsp:forward>
+		<%}
 		int tableNumber=0;
 		final int plus=1;
 	%>
@@ -39,7 +44,7 @@
 		
 		<!-- Tabla -->
 		<br><br>
-		<table class="table table-success table-striped-columns">
+		<table class="table table-info table-striped-columns">
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
@@ -74,7 +79,7 @@
 		  </tbody>
 		  
 		</table>
-		
+		<a href="../article/Article.jsp" class="btn btn-primary">Volver a artículos</a>
 		
 	</div>
 	<!-- Footer -->

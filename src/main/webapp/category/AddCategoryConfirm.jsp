@@ -14,6 +14,11 @@
 </head>
 <body>
 	<%
+		//Comprobamos si hay una sesion creada y si no lo dirigimos al servlet de error
+		
+		if(session.getAttribute("login")==null){%>
+			<jsp:forward page="/ErrorLogin"></jsp:forward>
+		<%}
 	String name = request.getParameter("name");
 			String description = request.getParameter("description");
 		

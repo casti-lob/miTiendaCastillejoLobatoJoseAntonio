@@ -16,6 +16,12 @@
 <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
+<%
+		//Comprobamos si hay una sesion creada y si no lo dirigimos al servlet de error
+		
+		if(session.getAttribute("login")==null){%>
+			<jsp:forward page="/ErrorLogin"></jsp:forward>
+		<%}%>
 	<div class="header">
 		<ul class="nav nav-tabs">
 		  <li class="nav-item">

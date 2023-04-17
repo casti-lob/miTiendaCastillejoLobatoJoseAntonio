@@ -12,6 +12,11 @@
 </head>
 <body>
 	<%
+		//Comprobamos si hay una sesion creada y si no lo dirigimos al servlet de error
+		
+		if(session.getAttribute("login")==null){%>
+			<jsp:forward page="/ErrorLogin"></jsp:forward>
+		<%}
 	int idCategory= Integer.parseInt(request.getParameter("id"));
 	Category category = CategoryControl.getCatetory(idCategory);
 	CategoryControl.deleteCategory(category);

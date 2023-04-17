@@ -16,6 +16,11 @@
 	<div class="header">
 	</div>
 	<%
+		//Comprobamos si hay una sesion creada y si no lo dirigimos al servlet de error
+		
+		if(session.getAttribute("login")==null){%>
+			<jsp:forward page="/ErrorLogin"></jsp:forward>
+		<%}
 		Purchase list =(Purchase) session.getAttribute("listPurchase");
 		int total = 0;
 	%>

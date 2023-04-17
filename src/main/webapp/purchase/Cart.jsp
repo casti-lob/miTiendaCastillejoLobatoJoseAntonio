@@ -14,6 +14,11 @@
 </head>
 <body>
 	<%
+		//Comprobamos si hay una sesion creada y si no lo dirigimos al servlet de error
+		
+		if(session.getAttribute("login")==null){%>
+			<jsp:forward page="/ErrorLogin"></jsp:forward>
+		<%}
 	int id = Integer.parseInt(request.getParameter("id"));
 	int stock = Integer.parseInt(request.getParameter("stockPurchase"));
 	Article article = ArticleControl.getArticle(id);
